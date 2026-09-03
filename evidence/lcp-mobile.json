@@ -1,0 +1,26 @@
+{
+  "measuredAt": "2026-09-03T11:18:26.548Z",
+  "browser": "Chromium 140.0.7339.16",
+  "unit": "ms",
+  "threshold": 2500,
+  "profile": {
+    "viewport": "360x800",
+    "deviceScaleFactor": 2,
+    "cpuSlowdownMultiplier": 4,
+    "latencyMs": 150,
+    "downloadBitsPerSecond": 1440000
+  },
+  "command": "npm run measure:lcp -- http://127.0.0.1:4321/raderwerk-site",
+  "results": {
+    "/": 216,
+    "/werkwijze/": 212,
+    "/diensten/": 212,
+    "/cases/": 208,
+    "/transparantie/": 204,
+    "/contact/": 216,
+    "/cases/kantelbeer/": 612,
+    "/cases/spoorlinde/": 812,
+    "/cases/zoutkaap/": 740,
+    "/cases/raderwerk/": 700
+  }
+}
