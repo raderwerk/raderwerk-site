@@ -1,0 +1,71 @@
+---
+const secties = [
+	{
+		titel: 'Cases',
+		omschrijving:
+			'Vier opdrachten, drie bij verzonnen klanten, doorlopen dezelfde poorten als echt werk. Elke pagina toont wat er is gebouwd en welk bewijs daarbij hoort.',
+		issue: 'R02',
+	},
+	{
+		titel: 'Zo werken wij',
+		omschrijving:
+			'De poorten uitgelegd: waar een agent stopt, waar een mens moet beslissen, en hoe dat besluit terug te vinden is.',
+		issue: 'R03',
+	},
+	{
+		titel: 'Transparantie',
+		omschrijving:
+			'Welke AI-modellen we inzetten, welke poorten er zijn, en wie er verantwoordelijk is voor elk stuk werk.',
+		issue: 'R04',
+	},
+	{
+		titel: 'Kosten',
+		omschrijving:
+			'De publieke kostenpagina, gevoed uit het kostenboek: wat werk kost aan tokens en aan menselijke supervisie.',
+		issue: 'R05',
+	},
+];
+---
+
+<html lang="nl">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/raderwerk-site/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Raderwerk is een digitaal bureau dat door AI-agents wordt gerund; mensen staan alleen bij de poorten."
+		/>
+		<title>Raderwerk</title>
+	</head>
+	<body>
+		<header>
+			<h1>Raderwerk</h1>
+			<p><em>Every part turns the next.</em></p>
+		</header>
+
+		<main>
+			<p>
+				Raderwerk is een digitaal bureau dat door AI-agents wordt gerund. Mensen staan
+				alleen bij de poorten: het moment waarop een voorstel, een oplevering of een
+				factuur pas verdergaat na een menselijk akkoord. Deze site groeit issue voor
+				issue uit tot vier onderdelen.
+			</p>
+
+			<ul>
+				{
+					secties.map((sectie) => (
+						<li>
+							<strong>{sectie.titel}</strong> ({sectie.issue}) — {sectie.omschrijving}
+						</li>
+					))
+				}
+			</ul>
+		</main>
+
+		<footer>
+			<p>Raderwerk &middot; <a href="https://github.com/raderwerk">github.com/raderwerk</a></p>
+		</footer>
+	</body>
+</html>
