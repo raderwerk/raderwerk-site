@@ -28,3 +28,6 @@ jobs:
 
       - name: Build and verify all pages, metadata, and internal links
         run: npm test
+
+      - name: Check external links
+        run: npm run check:external

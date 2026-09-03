@@ -14,6 +14,7 @@ npm run dev       # localhost:4321
 npm run check     # Astro- en TypeScript-controle
 npm run build     # productiebuild naar ./dist
 npm test          # build, metadata, actieve navigatie en interne href/src-links
+npm run check:external # controleer externe links (wordt ook in CI uitgevoerd)
 npm run preview   # bekijk de build lokaal
 npm run measure:lcp -- http://127.0.0.1:4321/raderwerk-site # schrijf evidence/lcp-mobile.json
 ```
@@ -28,7 +29,7 @@ Elke pull request doorloopt review en QA op een preview. Alleen een mens kan na 
 
 De transparantiepagina maakt de ingezette AI, de vier menselijke poorten en de verantwoordelijkheid zichtbaar. De publieke kostenpagina volgt in een afzonderlijke opdracht zodra het goedgekeurde kostenboek daarvoor beschikbaar is; kosten worden hier niet vooruitlopend daarop ingevuld.
 
-De cases bevatten schermafbeeldingen op 1440 × 900 pixels. Voor Kantelbeer en Spoorlinde zijn die van de gebouwde preview-repositories gemaakt. Omdat de previews van Zoutkaap en Raderwerk nog in aanbouw zijn, tonen die twee afbeeldingen aantoonbaar de huidige publieke casepagina en benoemt het bijschrift die afwijking; ze worden vervangen zodra de projectpreviews beschikbaar zijn.
+De cases met een beschikbare preview bevatten een schermafbeelding op 1440 × 900 pixels. Kantelbeer en Spoorlinde tonen hun huidige preview. Voor Zoutkaap en Raderwerk is nog geen projectpreview beschikbaar; hun casepagina's tonen daarom bewust geen afbeelding.
 
 ## Fictieve cases
 

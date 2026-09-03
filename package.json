@@ -10,6 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "check:external": "node scripts/check-site.mjs --external",
     "measure:lcp": "node scripts/measure-lcp.mjs",
     "astro": "astro",
     "test": "npm run build && node --test scripts/check-site.test.mjs && node scripts/check-site.mjs"

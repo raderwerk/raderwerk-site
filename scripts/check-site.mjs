@@ -23,6 +23,23 @@ export function checkReference(reference, publicPaths) {
 	if (!publicPaths.has(pathname)) return `does not resolve to a built file: ${reference}`;
 }
 
+export function checkExternalStatus(reference, status) {
+	if (status < 200 || status >= 400) return `external link returned HTTP ${status}: ${reference}`;
+}
+
+async function checkExternalReference(reference) {
+	try {
+		const response = await fetch(reference, {
+			redirect: 'follow',
+			signal: AbortSignal.timeout(15_000),
+			headers: { 'user-agent': 'raderwerk-site-link-checker/1.0' },
+		});
+		return checkExternalStatus(reference, response.status);
+	} catch (error) {
+		return `external link could not be reached: ${reference} (${error.message})`;
+	}
+}
+
 async function main() {
 	const files = await walk(root);
 	const htmlFiles = files.filter((file) => file.endsWith('.html'));
@@ -35,14 +52,22 @@ async function main() {
 	}
 
 	const errors = [];
+	const externalReferences = new Set();
 	for (const file of htmlFiles) {
 		const html = await readFile(file, 'utf8');
 		for (const [, attribute, reference] of html.matchAll(/\b(href|src)="([^"]+)"/g)) {
 			const error = checkReference(reference, publicPaths);
 			if (error) errors.push(`${relative(root, file)} ${attribute} ${error}`);
+			if (/^https?:\/\//.test(reference)) externalReferences.add(reference);
 		}
 		if (!html.includes('<meta name="description"')) errors.push(`${relative(root, file)} has no description`);
 		if (!html.includes('aria-current="page"')) errors.push(`${relative(root, file)} has no current-page marker`);
+	}
+	if (process.argv.includes('--external')) {
+		for (const reference of externalReferences) {
+			const error = await checkExternalReference(reference);
+			if (error) errors.push(error);
+		}
 	}
 
 	if (errors.length) {
@@ -50,7 +75,8 @@ async function main() {
 		process.exitCode = 1;
 		return;
 	}
-	console.log(`Checked ${htmlFiles.length} pages: base-prefixed href/src links, built targets, metadata, and current-page markers are valid.`);
+	const externalMessage = process.argv.includes('--external') ? ` and ${externalReferences.size} external links` : '';
+	console.log(`Checked ${htmlFiles.length} pages${externalMessage}: base-prefixed href/src links, built targets, metadata, and current-page markers are valid.`);
 }
 
 if (process.argv[1] === new URL(import.meta.url).pathname) await main();
