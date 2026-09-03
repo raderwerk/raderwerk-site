@@ -10,13 +10,17 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "check:external": "node scripts/check-site.mjs --external",
+    "measure:lcp": "node scripts/measure-lcp.mjs",
+    "astro": "astro",
+    "test": "npm run build && node --test scripts/check-site.test.mjs && node scripts/check-site.mjs"
   },
   "dependencies": {
     "astro": "^7.2.10"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "playwright": "^1.55.0",
     "typescript": "^5.7.3"
   },
   "allowScripts": {

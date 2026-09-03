@@ -1,40 +1,38 @@
 # raderwerk-site
 
-## Doel
+Publieke, statische site van Raderwerk op GitHub Pages. De site bevat home, werkwijze, diensten, case-overzicht, transparantie, contact en vier casepagina's. De cases zijn lopende opdrachten: er worden geen onbevestigde resultaten of cijfers gepubliceerd.
 
-De eigen site van Raderwerk, gepubliceerd op GitHub Pages. Vier onderdelen: vier cases (drie bij fictieve klanten, één bij Raderwerk zelf), de pagina "Zo werken wij" met de poorten uitgelegd, een transparantiepagina (welke AI, welke poorten, wie verantwoordelijk) en een publieke kostenpagina die uit het kostenboek wordt gevoed.
+## Stack
 
-## Klant
-
-Raderwerk zelf. Zie `client-portfolio.md` (hoofdstuk 4) in de design-context voor de volledige beschrijving van dit engagement (P6/P7).
-
-## Stack en waarom
-
-[Astro](https://astro.build), statisch, TypeScript strict. Geen server nodig, bouwt naar platte HTML, en dat is precies wat een documentatie- en casesite nodig heeft. Deployt zonder extra infrastructuur naar GitHub Pages.
+[Astro](https://astro.build), statisch en TypeScript strict. De productiebuild bevat tien HTML-pagina's zonder client-side JavaScript en gebruikt op GitHub Pages het basispad `/raderwerk-site/` voor alle interne pagina's en bestanden.
 
 ## Lokaal draaien
 
 ```sh
 npm install
 npm run dev       # localhost:4321
-npm run check     # typecheck
-npm run build     # productie-build naar ./dist
+npm run check     # Astro- en TypeScript-controle
+npm run build     # productiebuild naar ./dist
+npm test          # build, metadata, actieve navigatie en interne href/src-links
+npm run check:external # controleer externe links (wordt ook in CI uitgevoerd)
 npm run preview   # bekijk de build lokaal
+npm run measure:lcp -- http://127.0.0.1:4321/raderwerk-site # schrijf evidence/lcp-mobile.json
 ```
 
-## Bijdragen via pull request
+Controleer zicht en toetsenbordbediening op 360, 768 en 1440 pixels. De skiplink, semantische navigatie en zichtbare focusstijl ondersteunen toetsenbordgebruik. De aangepaste tekstcombinaties meten minimaal 4,5:1; de contrasterende focusindicator meet minimaal 3,0:1 tegen aangrenzende achtergronden.
 
-1. Vertak vanaf `main`.
-2. Draai `npm run check` en `npm run build` lokaal; beide moeten slagen voordat je een PR opent.
-3. Open de PR met het pull-request-template ingevuld: wat, waarom, bewijs, DoD-checklist, poort.
-4. Een mens keurt goed en merget. Agents mergen, force-pushen en deployen nooit zelf.
+De mobiele LCP-meting gebruikt Chromium met een 360 × 800-viewport op 2×, 4× CPU-vertraging, 150 ms latency en 1,44 Mbit/s downloadsnelheid. Start eerst `npm run preview` en voer daarna het bovenstaande reproductiecommando uit. De gelogde resultaten staan in [`evidence/lcp-mobile.json`](evidence/lcp-mobile.json).
 
-Zie `AGENTS.md` voor de volledige regels voor Codex, Cursor en Claude in deze repo.
+## Publicatie en poorten
 
-## Poorten
+Elke pull request doorloopt review en QA op een preview. Alleen een mens kan na de publicatiepoort naar `main` mergen; agents deployen niet zelfstandig. De previews van Kantelbeer en Spoorlinde worden vanuit hun eigen repositories gepubliceerd. Zoutkaap en Raderwerk staan als ‘in aanbouw’ vermeld.
 
-Deze repo volgt het poortmodel uit de Raderwerk-werkplaats: elke pull request doorloopt Agentreview en QA op preview, en gaat pas naar `main` na de menselijke poort "Merge of publicatie". Er wordt hier nooit zelfstandig gemerged of gedeployd door een agent.
+De transparantiepagina maakt de ingezette AI, de vier menselijke poorten en de verantwoordelijkheid zichtbaar. De publieke kostenpagina volgt in een afzonderlijke opdracht zodra het goedgekeurde kostenboek daarvoor beschikbaar is; kosten worden hier niet vooruitlopend daarop ingevuld.
 
-## Footer-regel
+De cases met een beschikbare preview bevatten een schermafbeelding op 1440 × 900 pixels. Kantelbeer en Spoorlinde tonen hun huidige preview. Voor Zoutkaap en Raderwerk is nog geen projectpreview beschikbaar; hun casepagina's tonen daarom bewust geen afbeelding.
 
-De regel *"Demonstratiebedrijf van Raderwerk. Dit bedrijf bestaat niet."* hoort thuis op elke publieke pagina van een **fictieve** klant (Zoutkaap, Kantelbeer, Spoorlinde). Raderwerk zelf is geen fictieve klant, dus die regel staat niet op deze site. Pagina's die een fictieve case beschrijven, dragen de regel wel in hun eigen tekst.
+## Fictieve cases
+
+Zoutkaap, Kantelbeer en Spoorlinde zijn demonstratiebedrijven. Hun casepagina's tonen zichtbaar en in de voettekst: *“Demonstratiebedrijf van Raderwerk. Dit bedrijf bestaat niet.”* Raderwerk zelf is geen fictieve klant.
+
+Zie `AGENTS.md` voor alle bijdragerregels.

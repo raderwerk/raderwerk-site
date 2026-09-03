@@ -1,0 +1,5 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { sitePath } from '../lib/urls';
+---
+<Layout title="Contact" description="Neem via GitHub contact op met Raderwerk over een digitale opdracht." primaryHref="https://github.com/raderwerk" primaryLabel="Open GitHub"><section class="hero"><p class="eyebrow">Contact</p><h1>Begin met een concrete vraag.</h1><p class="lead">Beschrijf het gewenste resultaat, de beschikbare bronnen en wie het besluit neemt. Dan kan het eerste controlepunt scherp worden gezet.</p><div class="actions"><a class="button" href="https://github.com/raderwerk">Bekijk Raderwerk op GitHub</a><a href={sitePath('werkwijze/')}>Lees eerst de werkwijze</a></div></section><section class="section alt"><div class="prose"><h2>Wat helpt bij de start</h2><ul><li>Het probleem dat opgelost moet worden.</li><li>Bronnen die als waarheid gelden.</li><li>Grenzen rond data, systemen en publicatie.</li><li>De persoon die bij de poort beslist.</li></ul></div></section></Layout>
