@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { sitePath } from '../lib/urls';
 interface Props { name:string; intro:string; assignment:string; approach:string[]; preview?:string; }
 const {name,intro,assignment,approach,preview}=Astro.props;
 ---
-<Layout title={`${name} — lopende case`} description={`Lopende opdracht voor ${name}: klant, opdracht en aanpak.`} fictitious={name !== 'Raderwerk'} primaryHref={preview ?? '/contact/'} primaryLabel={preview ? 'Bekijk de preview' : 'Neem contact op'}>
-<section class="hero"><p class="eyebrow">Lopende opdracht · demonstratiecase</p><h1>{name}</h1><p class="lead">{intro}</p><div class="actions">{preview ? <a class="button" href={preview}>Bekijk de preview</a> : <span class="tag">Preview in aanbouw</span>}<a href="/cases/">Terug naar alle cases</a></div></section>
+<Layout title={`${name} — lopende case`} description={`Lopende opdracht voor ${name}: klant, opdracht en aanpak.`} fictitious={name !== 'Raderwerk'} primaryHref={preview ?? sitePath('contact/')} primaryLabel={preview ? 'Bekijk de preview' : 'Neem contact op'}>
+<section class="hero"><p class="eyebrow">Lopende opdracht{name !== 'Raderwerk' && ' · demonstratiecase'}</p><h1>{name}</h1><p class="lead">{intro}</p><div class="actions">{preview ? <a class="button" href={preview}>Bekijk de preview</a> : <span class="tag">Preview in aanbouw</span>}<a href={sitePath('cases/')}>Terug naar alle cases</a></div></section>
 <section class="section alt"><div class="prose"><p class="eyebrow">De opdracht</p><h2>Wat er moet veranderen</h2><p class="lead">{assignment}</p></div></section>
 <section class="section"><div class="prose"><p class="eyebrow">De aanpak</p><h2>Werk dat nu loopt</h2><ol class="steps">{approach.map(item=><li>{item}</li>)}</ol><p>Dit is werk in uitvoering. We publiceren geen resultaten voordat ze gemeten en gecontroleerd zijn.</p></div></section>
 </Layout>

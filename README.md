@@ -1,10 +1,10 @@
 # raderwerk-site
 
-Publieke, statische site van Raderwerk op GitHub Pages. De site bevat home, werkwijze, diensten, case-overzicht, contact en vier casepagina's. De cases zijn lopende opdrachten: er worden geen onbevestigde resultaten of cijfers gepubliceerd.
+Publieke, statische site van Raderwerk op GitHub Pages. De site bevat home, werkwijze, diensten, case-overzicht, transparantie, contact en vier casepagina's. De cases zijn lopende opdrachten: er worden geen onbevestigde resultaten of cijfers gepubliceerd.
 
 ## Stack
 
-[Astro](https://astro.build), statisch en TypeScript strict. De productiebuild bestaat uit negen HTML-pagina's zonder client-side JavaScript.
+[Astro](https://astro.build), statisch en TypeScript strict. De productiebuild bevat tien HTML-pagina's zonder client-side JavaScript en gebruikt op GitHub Pages het basispad `/raderwerk-site/` voor alle interne pagina's en bestanden.
 
 ## Lokaal draaien
 
@@ -13,15 +13,17 @@ npm install
 npm run dev       # localhost:4321
 npm run check     # Astro- en TypeScript-controle
 npm run build     # productiebuild naar ./dist
-npm test          # build, paginatelling, metadata en interne links
+npm test          # build, metadata, actieve navigatie en interne href/src-links
 npm run preview   # bekijk de build lokaal
 ```
 
-Controleer zicht en toetsenbordbediening op 360, 768 en 1440 pixels. De skiplink, semantische navigatie en zichtbare focusstijl ondersteunen toetsenbordgebruik. Kleurcombinaties zijn gekozen voor minimaal WCAG AA-contrast.
+Controleer zicht en toetsenbordbediening op 360, 768 en 1440 pixels. De skiplink, semantische navigatie en zichtbare focusstijl ondersteunen toetsenbordgebruik. De aangepaste tekstcombinaties meten minimaal 4,5:1; de contrasterende focusindicator meet minimaal 3,0:1 tegen aangrenzende achtergronden.
 
 ## Publicatie en poorten
 
 Elke pull request doorloopt review en QA op een preview. Alleen een mens kan na de publicatiepoort naar `main` mergen; agents deployen niet zelfstandig. De previews van Kantelbeer en Spoorlinde worden vanuit hun eigen repositories gepubliceerd. Zoutkaap en Raderwerk staan als ‘in aanbouw’ vermeld.
+
+De transparantiepagina maakt de ingezette AI, de vier menselijke poorten en de verantwoordelijkheid zichtbaar. De publieke kostenpagina volgt in een afzonderlijke opdracht zodra het goedgekeurde kostenboek daarvoor beschikbaar is; kosten worden hier niet vooruitlopend daarop ingevuld.
 
 ## Fictieve cases
 
