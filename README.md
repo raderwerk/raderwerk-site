@@ -1,40 +1,30 @@
 # raderwerk-site
 
-## Doel
+Publieke, statische site van Raderwerk op GitHub Pages. De site bevat home, werkwijze, diensten, case-overzicht, contact en vier casepagina's. De cases zijn lopende opdrachten: er worden geen onbevestigde resultaten of cijfers gepubliceerd.
 
-De eigen site van Raderwerk, gepubliceerd op GitHub Pages. Vier onderdelen: vier cases (drie bij fictieve klanten, één bij Raderwerk zelf), de pagina "Zo werken wij" met de poorten uitgelegd, een transparantiepagina (welke AI, welke poorten, wie verantwoordelijk) en een publieke kostenpagina die uit het kostenboek wordt gevoed.
+## Stack
 
-## Klant
-
-Raderwerk zelf. Zie `client-portfolio.md` (hoofdstuk 4) in de design-context voor de volledige beschrijving van dit engagement (P6/P7).
-
-## Stack en waarom
-
-[Astro](https://astro.build), statisch, TypeScript strict. Geen server nodig, bouwt naar platte HTML, en dat is precies wat een documentatie- en casesite nodig heeft. Deployt zonder extra infrastructuur naar GitHub Pages.
+[Astro](https://astro.build), statisch en TypeScript strict. De productiebuild bestaat uit negen HTML-pagina's zonder client-side JavaScript.
 
 ## Lokaal draaien
 
 ```sh
 npm install
 npm run dev       # localhost:4321
-npm run check     # typecheck
-npm run build     # productie-build naar ./dist
+npm run check     # Astro- en TypeScript-controle
+npm run build     # productiebuild naar ./dist
+npm test          # build, paginatelling, metadata en interne links
 npm run preview   # bekijk de build lokaal
 ```
 
-## Bijdragen via pull request
+Controleer zicht en toetsenbordbediening op 360, 768 en 1440 pixels. De skiplink, semantische navigatie en zichtbare focusstijl ondersteunen toetsenbordgebruik. Kleurcombinaties zijn gekozen voor minimaal WCAG AA-contrast.
 
-1. Vertak vanaf `main`.
-2. Draai `npm run check` en `npm run build` lokaal; beide moeten slagen voordat je een PR opent.
-3. Open de PR met het pull-request-template ingevuld: wat, waarom, bewijs, DoD-checklist, poort.
-4. Een mens keurt goed en merget. Agents mergen, force-pushen en deployen nooit zelf.
+## Publicatie en poorten
 
-Zie `AGENTS.md` voor de volledige regels voor Codex, Cursor en Claude in deze repo.
+Elke pull request doorloopt review en QA op een preview. Alleen een mens kan na de publicatiepoort naar `main` mergen; agents deployen niet zelfstandig. De previews van Kantelbeer en Spoorlinde worden vanuit hun eigen repositories gepubliceerd. Zoutkaap en Raderwerk staan als ‘in aanbouw’ vermeld.
 
-## Poorten
+## Fictieve cases
 
-Deze repo volgt het poortmodel uit de Raderwerk-werkplaats: elke pull request doorloopt Agentreview en QA op preview, en gaat pas naar `main` na de menselijke poort "Merge of publicatie". Er wordt hier nooit zelfstandig gemerged of gedeployd door een agent.
+Zoutkaap, Kantelbeer en Spoorlinde zijn demonstratiebedrijven. Hun casepagina's tonen zichtbaar en in de voettekst: *“Demonstratiebedrijf van Raderwerk. Dit bedrijf bestaat niet.”* Raderwerk zelf is geen fictieve klant.
 
-## Footer-regel
-
-De regel *"Demonstratiebedrijf van Raderwerk. Dit bedrijf bestaat niet."* hoort thuis op elke publieke pagina van een **fictieve** klant (Zoutkaap, Kantelbeer, Spoorlinde). Raderwerk zelf is geen fictieve klant, dus die regel staat niet op deze site. Pagina's die een fictieve case beschrijven, dragen de regel wel in hun eigen tekst.
+Zie `AGENTS.md` voor alle bijdragerregels.

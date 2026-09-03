@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "npm run build && node scripts/check-site.mjs"
   },
   "dependencies": {
     "astro": "^7.2.10"

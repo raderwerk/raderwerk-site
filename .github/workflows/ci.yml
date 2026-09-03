@@ -26,5 +26,5 @@ jobs:
       - name: Typecheck
         run: npm run check
 
-      - name: Build
-        run: npm run build
+      - name: Build and verify all pages, metadata, and internal links
+        run: npm test

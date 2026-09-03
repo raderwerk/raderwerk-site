@@ -1,0 +1,5 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const cases=[['Kantelbeer','Technische catalogus voor inkopers en dealers.','/cases/kantelbeer/'],['Spoorlinde','Reisaanbod vanuit één bron beheren en aanvragen volgen.','/cases/spoorlinde/'],['Zoutkaap','Shop en ERP verbinden zonder handmatig overtypen.','/cases/zoutkaap/'],['Raderwerk','Een controleerbare publieke site over het eigen werk.','/cases/raderwerk/']];
+---
+<Layout title="Cases" description="Vier lopende opdrachten van Raderwerk, zonder onbewezen resultaatclaims."><section class="hero"><p class="eyebrow">Cases</p><h1>Vier opdrachten in beweging.</h1><p class="lead">We laten zien wat de klant nodig heeft, wat de opdracht is en hoe het werk wordt aangepakt. Resultaten volgen pas na controleerbare meting.</p></section><section class="section"><div class="grid">{cases.map(([name,text,href])=><article class="card"><p class="eyebrow">Lopende opdracht</p><h2>{name}</h2><p>{text}</p><a href={href}>Bekijk de case <span aria-hidden="true">→</span></a></article>)}</div></section></Layout>
